@@ -17,6 +17,8 @@ export class BlogDetailComponent {
   blogModel: BlogModel = new BlogModel();
   id?: string;
 
+  imageUrl:string = "";
+
   constructor(
     private http: HttpService,
     private activated: ActivatedRoute,
@@ -25,6 +27,7 @@ export class BlogDetailComponent {
       this.id = res.id;
     });
     this.getBlogById(this.id!);
+    this.imageUrl = this.http.getImageUrl();
   }
 
   getBlogById(id: string) {

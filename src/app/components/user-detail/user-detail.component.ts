@@ -19,6 +19,8 @@ export class UserDetailComponent {
   blogs: BlogModel[] = [];
   id?: string;
 
+  imageUrl: string = "";
+
   constructor(
     private http: HttpService,
     private activated: ActivatedRoute,
@@ -31,6 +33,7 @@ export class UserDetailComponent {
     });
     this.getUserById(this.id!);
     this.getBlogByAuthorId(this.id!);
+    this.imageUrl = this.http.getImageUrl();
   }
 
   getUserById(id:string){
