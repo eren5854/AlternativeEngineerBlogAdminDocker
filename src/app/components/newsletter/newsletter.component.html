@@ -1,0 +1,32 @@
+<div style="display: flex;">
+    <h1>Mesajlar</h1>
+</div>
+
+<div class="insights" style="display: flex;">
+    <table class="table table-striped" style="margin-top: 70px;">
+        <thead>
+            <tr>
+                <th scope="col">Aktif</th>
+                <th scope="col">E-Posta</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(newsletter of newsletters; track newsletter){
+            <tr>
+                <td *ngIf="newsletter.isActive === false"><i style="color: rgb(177, 177, 177);" class="fa-solid fa-check"></i></td>
+                <td *ngIf="newsletter.isActive === true"><i style="color: rgb(79, 182, 236)" class="fa-solid fa-check-double"></i></td>
+                <td>{{newsletter.email}}</td>
+                <td>
+                    <button class="btn btn-primary mr-2" (click)="updateNewsletter(newsletter)">
+                        <i *ngIf="newsletter.isActive === true" class="fa-solid fa-bell"></i>
+                        <i *ngIf="newsletter.isActive === false" class="fa-solid fa-bell-slash"></i>
+                    </button>
+                    <button class="btn btn-danger" (click)="deleteNewsletter(newsletter.id!, newsletter.email!)"><i
+                            class="fa-solid fa-trash"></i></button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

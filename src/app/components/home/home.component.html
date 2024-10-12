@@ -1,0 +1,105 @@
+<div style="display: flex;">
+    <h1>Dashboard</h1>
+</div>
+
+<div class="insights">
+    <div class="sales">
+        <div style="display: flex; flex-direction: row; gap: 1rem; align-items: center;">
+            <span class="material-symbols-outlined icons">
+                group
+            </span>
+            <h2>Rol Dağılımı</h2>
+        </div>
+        <div class="middle">
+            <div class="left">
+                <h3>Admin:{{adminCount}}</h3>
+                <h3>Yazar:{{authorCount}}</h3>
+                <h3>Üye:{{userCount}}</h3>
+
+            </div>
+
+            <div style="width: 200px;">
+                <canvas id="roleChart"></canvas>
+            </div>
+
+            <!-- <div class="progress" style="--clr:#04fc43; --num:75;">
+                <div class="dot"></div>
+                <svg>
+                    <circle cx='65' cy='75' r='70'></circle>
+                </svg>
+                <div class="number">
+                    <p>75%</p>
+                </div>
+            </div> -->
+        </div>
+        <small class="text-muted">Toplam Kullanıcı: {{totalUser}}</small>
+    </div>
+
+    <div class="expenses">
+        <div style="display: flex; flex-direction: row; gap: 1rem; align-items: center;">
+            <span class="material-symbols-outlined icons">
+                wc
+            </span>
+            <h2>Cinsiyet Dağılımı</h2>
+        </div>
+        <div class="middle">
+            <div class="left">
+                <h3>Erkek:{{maleCount}}</h3>
+                <h3>Kadın:{{femaleCount}}</h3>
+                <h3>Bilinmeyen:{{unknownCount}}</h3>
+            </div>
+            <div style="width: 200px;">
+                <canvas id="genderChart"></canvas>
+            </div>
+        </div>
+        <small class="text-muted">Last 24 Hours</small>
+    </div>
+
+    <div class="income">
+        <div style="display: flex; flex-direction: row; gap: 1rem; align-items: center;">
+            <span class="material-symbols-outlined icons">
+                description
+                </span>
+            <h2>Blog Dağılımı</h2>
+        </div>
+        <div class="middle">
+            <div class="left">
+                <h3>Elektronik:{{electronikCount}}</h3>
+                <h3>Tasarım:{{designCount}}</h3>
+                <h3>Yazılım:{{softwareCount}}</h3>
+            </div>
+            <div style="width: 200px;">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+        <small class="text-muted">Toplam Blog: {{totalBlog}}</small>
+    </div>
+
+    <div class="sales item1">
+        <div style="display: flex; flex-direction: row; gap: 1rem; align-items: center;">
+            <span class="material-symbols-outlined icons">
+                group
+            </span>
+            <h2>Top 5 Blog</h2>
+        </div>
+        <div class="middle">
+            <table class="table table-striped" style="margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th scope="col">Blog</th>
+                        <th scope="col">Görüntülenme</th>
+                        <th scope="col">Yazar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(blog of topBlogs; track blog){
+                    <tr>
+                        <td>{{blog.title}}</td>
+                        <td>{{blog.viewCount}}</td>
+                        <td>{{blog.author.firstName}} {{blog.author.lastName}}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+<div style="display: flex;">
+    <h1>Site Bilgileri</h1>
+</div>
+
+<div class="insights">
+    <div class="sales">
+        <span class="material-symbols-outlined icons">
+            info
+            </span>
+        <div class="right">
+            <div class="input-box">
+                <h2>Bilgiler</h2>
+                <form #updateInformationForm="ngForm" >
+                    <div class="input-field mb-2">
+                        <label for="title">Site Adı</label>
+                        <input [(ngModel)]="informationModel.title" validate type="text" name="title" class="form-control"
+                            id="title" required autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <label for="subTitle">Alt başlık</label>
+                        <input [(ngModel)]="informationModel.subTitle" validate type="text" name="subTitle" class="form-control"
+                            id="subTitle" autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <label for="description">Açıklama</label>
+                        <input [(ngModel)]="informationModel.description" validate type="text" name="description" class="form-control"
+                            id="description" autocomplete="off">
+                    </div>
+
+                    <div class="input-field">
+                        <div class="btns">
+                            <button [disabled]="" class="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="sales">
+        <span class="material-symbols-outlined icons">
+            info
+            </span>
+        <div class="right">
+            <div class="input-box">
+                <h2>Kontakt</h2>
+                <form #updateInformationForm="ngForm" (ngSubmit)="updateInformation(updateInformationForm)">
+                    <div class="input-field mb-2">
+                        <label for="address">Adres</label>
+                        <input [(ngModel)]="informationModel.address" validate type="text" name="address" class="form-control"
+                            id="address" required autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <label for="email">E-Posta</label>
+                        <input [(ngModel)]="informationModel.email" validate type="text" name="email" class="form-control"
+                            id="email" autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <label for="phoneNumber">Telefon Numarası</label>
+                        <input [(ngModel)]="informationModel.phoneNumber" validate type="text" name="phoneNumber" class="form-control"
+                            id="phoneNumber" autocomplete="off">
+                    </div>
+
+                    <div class="input-field">
+                        <div class="btns">
+                            <button [disabled]="" class="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="sales">
+        <span class="material-symbols-outlined icons">
+            link
+            </span>
+        <div class="right">
+            <div class="input-box">
+                <h2>Linkler</h2>
+                <form #updateInformationForm="ngForm" (ngSubmit)="updateInformation(updateInformationForm)">
+                    <div class="input-field mb-2">
+                        <label for="linkedinUrl">Linkedin</label>
+                        <input [(ngModel)]="informationModel.linkedinUrl" validate type="text" name="linkedinUrl" class="form-control"
+                            id="linkedinUrl" required autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <label for="instagramUrl">Instagram</label>
+                        <input [(ngModel)]="informationModel.instagramUrl" validate type="text" name="instagramUrl" class="form-control"
+                            id="instagramUrl" autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <label for="xUrl">X (Twitter)</label>
+                        <input [(ngModel)]="informationModel.xUrl" validate type="text" name="xUrl" class="form-control"
+                            id="xUrl" autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <label for="githubUrl">Github</label>
+                        <input [(ngModel)]="informationModel.githubUrl" validate type="text" name="githubUrl" class="form-control"
+                            id="githubUrl" autocomplete="off">
+                    </div>
+
+                    <div class="input-field">
+                        <div class="btns">
+                            <button [disabled]="" class="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

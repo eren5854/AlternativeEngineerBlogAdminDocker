@@ -1,0 +1,82 @@
+<div style="display: flex;">
+    <h1>Contact Page</h1>
+    <span (click)="addCard()" style="font-size: 34px; color: green; cursor: pointer;"
+        class="material-symbols-outlined ms-3">
+        add_circle
+    </span>
+</div>
+
+<div class="insights">
+    <div *ngIf="addCardDiv" class="sales">
+        <span class="material-symbols-outlined icons">
+            category
+            </span>
+        <div class="right">
+            <div class="input-box">
+                <h2>Category</h2>
+                <form #createCategoryForm="ngForm" (ngSubmit)="createCategory(createCategoryForm)">
+                    <div class="input-field mb-2">
+                        <label for="address">Link Url</label>
+                        <input [(ngModel)]="categoryModel.name" validate type="text" name="linkUrl" class="form-control"
+                            id="linkUrl" required autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <label for="email">Link Icon</label>
+                        <input [(ngModel)]="categoryModel.mainCategoryId" validate type="text" name="linkIcon" class="form-control"
+                            id="linkIcon" autocomplete="off">
+                    </div>
+
+                    <div class="input-field">
+                        <div class="btns">
+                            <button [disabled]="" class="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @for (category of categories; track category) {
+
+        <div class="sales">
+            <span class="material-symbols-outlined icons">
+                category
+                </span>
+            <div class="right">
+                <div class="input-box">
+                    <h2>Category</h2>
+                    <form #updateCategoryForm="ngForm" (ngSubmit)="updateCategory(updateCategoryForm, category)">
+                        <div class="input-field mb-2">
+                            <label for="address">Category Name</label>
+                            <input [(ngModel)]="category.name" validate type="text" name="linkUrl" class="form-control"
+                                id="linkUrl" required autocomplete="off">
+                        </div>
+    
+                        <div class="input-field mb-2">
+                            <label for="email">Main Category</label>
+                            <input [(ngModel)]="category.mainCategoryId" validate type="text" name="linkIcon" class="form-control"
+                                id="linkIcon" autocomplete="off">
+                        </div>
+    
+                        <div class="input-field">
+                            <div class="btns">
+                                <button type="submit" [disabled]="" class="submit">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save
+                                </button>
+                                <button type="button" (click)="deleteCategoryById(category.id!)" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+    
+                </div>
+            </div>
+        </div>
+    }
+</div>

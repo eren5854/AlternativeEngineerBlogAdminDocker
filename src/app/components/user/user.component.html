@@ -1,0 +1,112 @@
+<div style="display: flex;">
+    <h1>Yazarlar ve Kullanıcılar</h1>
+</div>
+
+<div class="insights" style="display: flex;">
+    <table class="table table-striped" style="margin-top: 70px;">
+        <thead>
+            <tr>
+                <th scope="col">Kullanıcı Adı</th>
+                <th scope="col">E-posta</th>
+                <th scope="col">Role</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(user of users; track user){
+            <tr>
+                <td>{{user.userName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.role.name}}</td>
+                <td>
+                    <button class="btn btn-success mr-2" (click)="openModal(user)"><i
+                            class="fa-solid fa-eye"></i></button>
+                    <button class="btn btn-danger" (click)="deleteUserById(user.id!, user.userName)"><i
+                            class="fa-solid fa-trash"></i></button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" [ngStyle]="{'display': showModal ? 'flex' : 'none'}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h3 style="font-size: 25px;">Kullanıcı Detayı</h3>
+                    <p>{{selectedUser?.createdDate | date: "dd/MM/yyy - HH:mm"}}</p>
+                    <div style="display: flex; flex-direction: row; gap: 1rem;">
+                        <h2>Rol değiştir: </h2>
+                        <button *ngIf="selectedUser?.role.name === 'User'" class="btn btn-primary" (click)="changeUserRole(selectedUser?.id!, 'Author')">Author</button>
+                        <button *ngIf="selectedUser?.role.name === 'Author'" class="btn btn-primary" (click)="changeUserRole(selectedUser?.id!, 'User')">User</button>
+                    </div>
+                </div>
+
+                <div class="modal-close-btn" (click)="closeModal()">
+                    <span style="font-size: 44px; cursor: pointer;" class="material-symbols-outlined">
+                        cancel
+                    </span>
+                </div>
+            </div>
+            <div class="sales message-modal">
+                <div class="right">
+                    <div class="input-box">
+                        <div class="grid-container">
+                            <!-- <div class="input-field mb-2">
+                                <label for="phone">Profile Picture:</label>
+                                <img style="width: 100px;"
+                                    src="https://localhost:7268/ProfilePictures/{{selectedUser?.profilePicture}}"
+                                    alt="">
+                            </div> -->
+                            <div class="input-field mb-2">
+                                <label for="phone">Id:</label>
+                                <p>{{ selectedUser?.id }}</p>
+                            </div>
+                            <div class="input-field mb-2">
+                                <label for="email">Adı Soyadı:</label>
+                                <p>{{ selectedUser?.fullName }}</p>
+                            </div>
+                            <div class="input-field mb-2">
+                                <label for="email">E-Posta:</label>
+                                <p>{{ selectedUser?.email }}</p>
+                            </div>
+                            <div class="input-field mb-2">
+                                <label for="companyName">Kullanıcı Adı:</label>
+                                <p>{{ selectedUser?.userName }}</p>
+                            </div>
+                            <!-- <div class="input-field mb-2">
+                                <label for="companyName">Telefon Numarası:</label>
+                                <p>{{ selectedUser?.phoneNumber }}</p>
+                            </div> -->
+                            <div class="input-field mb-2">
+                                <label for="subject">Rolü:</label>
+                                <p>{{ selectedUser?.role.name }}</p>
+                            </div>
+                            <div class="input-field mb-2">
+                                <label for="subject">Email Onayı:</label>
+                                <p>{{ selectedUser?.emailConfirmed }}</p>
+                            </div>
+                            <!-- <div class="input-field mb-2">
+                                <label for="subject">Doğum Tarihi:</label>
+                                <p>{{ selectedUser?.dateOfBirth | date: "dd/MM/yyyy"}}</p>
+                            </div> -->
+                            <div class="input-field mb-2">
+                                <label for="subject">Cinsiyet:</label>
+                                <p>{{ getGenderText(selectedUser?.gender) }}</p>
+                            </div>
+                            <div *ngIf="selectedUser?.role.name === 'Author'" class="input-field mb-2">
+                                <a routerLink="/user-detail/{{selectedUser?.id}}" class="btn btn-info">Detay...</a>
+                            </div>
+                            <!-- <div class="input-field mb-2 item1">
+                                <label for="messageText">About</label>
+                                <p class="form-control" style="height: 100px;">{{ selectedUser?.about }}</p>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,226 @@
+<div style="display: flex;">
+    <h1>Ayarlar</h1>
+    <span (click)="addCard()" style="font-size: 34px; color: green; cursor: pointer;"
+        class="material-symbols-outlined ms-3">
+        add_circle
+    </span>
+</div>
+
+<div class="insights">
+    <div class="sales">
+        <span class="material-symbols-outlined icons">
+            person
+        </span>
+        <div class="right">
+            <div class="input-box">
+                <h2>Kullanıcı Ayarları</h2>
+                <form #updateUserForm="ngForm" (ngSubmit)="updateUser(updateUserForm)">
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="firstName">İsim</label>
+                            <p *ngIf="!userModel.firstName" style="color: red; font-size: 14px;">*</p>
+                        </div>
+                        <input [(ngModel)]="userModel.firstName!" validate type="text" name="firstName"
+                            class="form-control" id="firstName" required autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="lastName">Soyisim</label>
+                            <p *ngIf="!userModel.lastName" style="color: red; font-size: 14px;">*</p>
+                        </div>
+                        <input [(ngModel)]="userModel.lastName!" validate type="text" name="lastName"
+                            class="form-control" id="lastName" required autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="userName">Kullanıcı Adı</label>
+                            <p *ngIf="!userModel.userName" style="color: red; font-size: 14px;">*</p>
+                        </div>
+                        <input [(ngModel)]="userModel.userName" validate type="text" name="userName"
+                            class="form-control" id="userName" required autocomplete="off">
+                    </div>
+
+                    
+                    <div class="input-field">
+                        <div class="btns">
+                            <button [disabled]="" class="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="sales">
+        <span class="material-symbols-sharp icons">password</span>
+        <div class="right">
+            <div class="input-box">
+                <h2>Şifre Değiştir</h2>
+                <form #changePasswordForm="ngForm" (ngSubmit)="changePassword(changePasswordForm)">
+                    <div class="input-field mb-3">
+                        <label for="password">Mevcut Şifre</label>
+                        <input [(ngModel)]="changePasswordModel.currentPassword" validate type="password"
+                            name="password" class="form-control" id="password" autocomplete="off">
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Yeni Şifre</label>
+                        <div class="input-group mb-3">
+                            <input [(ngModel)]="changePasswordModel.newPassword" required minlength="8" validate
+                                (focus)="isPasswordFocus = true" (blur)="isPasswordFocus = false" #password
+                                name="password" (keyup)="checkRegexPatternForPassword(password)" type="password"
+                                class="form-control">
+                            <span class="input-group-text icons" id="basic-addon1">
+                                <i (click)="showOrHidePassword(password)" *ngIf="!isShowPassword"
+                                    class="fa-solid fa-eye"></i>
+                                <i (click)="showOrHidePassword(password)" *ngIf="isShowPassword"
+                                    class="fa-solid fa-eye-slash"></i>
+                            </span>
+                        </div>
+                        <div *ngIf="isPasswordFocus" class="psswrd-req">
+                            <ul class="password-ul">
+                                <li class="pw-error" id="minCharacter">Min 8 Character</li>
+                                <li class="pw-error" id="upperLetter">Upper Case</li>
+                                <li class="pw-error" id="lowerLetter">Lower Case</li>
+                            </ul>
+                            <ul class="password-ul">
+                                <li class="pw-error" id="specialLetter">Special Character</li>
+                                <li class="pw-error" id="numLetter">Number</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <div class="btns">
+                            <button [disabled]="" class="submit">
+                                <i class="fa-solid fa-floppy-disk "></i>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="addCardDiv" class="sales">
+        <span class="material-symbols-outlined icons">
+            mail
+            </span>
+        <div class="right">
+            <div class="input-box">
+                <h2>Email Js Parametreleri</h2>
+                <form #createEmailJsParameterForm="ngForm" (ngSubmit)="creteEmailJsParameter(createEmailJsParameterForm)">
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="firstName">Name</label>
+                            <p *ngIf="!emailJsModel.name" style="color: red; font-size: 14px;">*</p>
+                        </div>
+                        <input [(ngModel)]="emailJsModel.name!" validate type="text" name="name"
+                            class="form-control" id="name" required autocomplete="off">
+                    </div>
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="firstName">Service ID</label>
+                            <p *ngIf="!emailJsModel.serviceId" style="color: red; font-size: 14px;">*</p>
+                        </div>
+                        <input [(ngModel)]="emailJsModel.serviceId!" validate type="text" name="serviceId"
+                            class="form-control" id="serviceId" required autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="lastName">Template ID</label>
+                            <p *ngIf="!emailJsModel.templateId" style="color: red; font-size: 14px;">*</p>
+                        </div>
+                        <input [(ngModel)]="emailJsModel.templateId!" validate type="text" name="templateId"
+                            class="form-control" id="templateId" required autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="userName">Public Key</label>
+                            <p *ngIf="!emailJsModel.publicKey" style="color: red; font-size: 14px;">*</p>
+                        </div>
+                        <input [(ngModel)]="emailJsModel.publicKey" validate type="text" name="publicKey"
+                            class="form-control" id="publicKey" required autocomplete="off">
+                    </div>
+
+                    
+                    <div class="input-field">
+                        <div class="btns">
+                            <button [disabled]="" class="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @for (emailJsParameter of emailJsParameters; track emailJsParameter) {
+        <div class="sales">
+            <span class="material-symbols-outlined icons">
+                mail
+                </span>
+            <div class="right">
+                <div class="input-box">
+                    <h2>Email Js Parametreleri</h2>
+                    <form #updateEmailJsParameterForm="ngForm" (ngSubmit)="updateEmailJsParameter(updateEmailJsParameterForm, emailJsParameter)">
+                        <div class="input-field mb-2">
+                            <div style="display: flex; gap: 0.5rem; height: 21px;">
+                                <label for="firstName">Name</label>
+                                <p *ngIf="!emailJsParameter.name" style="color: red; font-size: 14px;">*</p>
+                            </div>
+                            <input [(ngModel)]="emailJsParameter.name!" validate type="text" name="name"
+                                class="form-control" id="name" required autocomplete="off">
+                        </div>
+                        <div class="input-field mb-2">
+                            <div style="display: flex; gap: 0.5rem; height: 21px;">
+                                <label for="firstName">Service ID</label>
+                                <p *ngIf="!emailJsParameter.serviceId" style="color: red; font-size: 14px;">*</p>
+                            </div>
+                            <input [(ngModel)]="emailJsParameter.serviceId!" validate type="text" name="serviceId"
+                                class="form-control" id="serviceId" required autocomplete="off">
+                        </div>
+    
+                        <div class="input-field mb-2">
+                            <div style="display: flex; gap: 0.5rem; height: 21px;">
+                                <label for="lastName">Template ID</label>
+                                <p *ngIf="!emailJsParameter.templateId" style="color: red; font-size: 14px;">*</p>
+                            </div>
+                            <input [(ngModel)]="emailJsParameter.templateId!" validate type="text" name="templateId"
+                                class="form-control" id="templateId" required autocomplete="off">
+                        </div>
+    
+                        <div class="input-field mb-2">
+                            <div style="display: flex; gap: 0.5rem; height: 21px;">
+                                <label for="userName">Public Key</label>
+                                <p *ngIf="!emailJsParameter.publicKey" style="color: red; font-size: 14px;">*</p>
+                            </div>
+                            <input [(ngModel)]="emailJsParameter.publicKey" validate type="text" name="publicKey"
+                                class="form-control" id="publicKey" required autocomplete="off">
+                        </div>
+                        
+                        <div class="input-field">
+                            <div class="btns">
+                                <button [disabled]="" class="submit">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Update
+                                </button>
+                                <button type="button" (click)="deleteEmailJsParameterById(emailJsParameter.id!)" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,152 @@
+<div style="display: flex;">
+    <h1>Blog Detayı</h1>
+</div>
+
+<div class="insights">
+    <div class="sales">
+        <span class="material-symbols-outlined icons">
+            person
+        </span>
+        <div class="right">
+            <div class="input-box">
+                <!-- <h2>Information</h2> -->
+                <form #updateUserForm="ngForm">
+                    <div style="display: flex; justify-content: center;" class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                        </div>
+                        <img style="width: 174px;"
+                            src="https://localhost:7268/Images/{{blogModel.mainImage}}" alt="">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="firstName">Başlık</label>
+                        </div>
+                        <input [(ngModel)]="blogModel.title!" validate type="text" name="title"
+                            class="form-control" id="title" readonly autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="lastName">Alt Başlık</label>
+                        </div>
+                        <textarea [(ngModel)]="blogModel.subTitle!" type="text" name="subTitle"
+                            class="form-control" id="subTitle" readonly autocomplete="off"></textarea>
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="userName">Kategori</label>
+                        </div>
+                        <input [(ngModel)]="blogModel.category.name" validate type="text" name="category"
+                            class="form-control" id="category" readonly autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="lastName">Oluşturma Tarihi</label>
+                        </div>
+                        <label type="text" name="createdDate" class="form-control" id="createdDate" readonly
+                            autocomplete="off">{{blogModel.createdDate | date: 'dd/MM/yyyy - HH:mm'}}</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="sales">
+        <span class="material-symbols-outlined icons">
+            person
+        </span>
+        <div class="right">
+            <div class="input-box">
+                <!-- <h2>Information</h2> -->
+                <form #updateUserForm="ngForm">
+
+                    <div style="display: flex; justify-content: center;" class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                        </div>
+                        <img style="width: 174px;"
+                            src="https://localhost:7268/ProfilePictures/{{blogModel.author.profilePicture}}" alt="">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="userName">Yazar Adı</label>
+                        </div>
+                        <input [(ngModel)]="blogModel.author.firstName" validate type="text" name="firstName"
+                            class="form-control" id="firstName" readonly autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="userName">Yazar Soyadı</label>
+                        </div>
+                        <input [(ngModel)]="blogModel.author.lastName" validate type="text" name="lastName"
+                            class="form-control" id="lastName" readonly autocomplete="off">
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="userName">Yazar Rolü</label>
+                        </div>
+                        <input [(ngModel)]="blogModel.author.role.name" validate type="text" name="role" class="form-control"
+                            id="role" readonly autocomplete="off">
+                    </div>
+
+                    <!-- <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="userName">Hesap oluşturma tarihi</label>
+                        </div>
+                        <label type="text" name="role" class="form-control" id="role" readonly
+                            autocomplete="off">{{userModel.createdDate | date: 'dd/MM/yyyy - hh:mm'}}</label>
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="userName">Hakkında</label>
+                        </div>
+                        <textarea [(ngModel)]="userModel.about" name="about" class="form-control" id="about" readonly
+                            autocomplete="off"></textarea>
+                    </div>
+
+                    <div class="input-field mb-2">
+                        <div style="display: flex; gap: 0.5rem; height: 21px;">
+                            <label for="userName">Son Giriş</label>
+                        </div>
+                        <label type="text" name="role" class="form-control" id="role" readonly
+                            autocomplete="off">{{userModel.lastLogin | date: 'dd/MM/yyyy - hh:mm'}}</label>
+                    </div> -->
+
+                    <!-- <div class="input-field">
+                        <div class="btns">
+                            <button [disabled]="" class="submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+                        </div>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sales item1">
+        <span class="material-symbols-outlined icons">
+            person
+        </span>
+        <div class="right">
+            <div class="input-box">
+                <h2>Blog Yazısı</h2>
+                <div class="input-field mb-2">
+                    <div style="display: flex; gap: 0.5rem; height: 21px;">
+                        
+                    </div>
+                    <p style="height: 100%;" [innerHTML]="blogModel.content" name="content" class="form-control" id="content" readonly
+                        autocomplete="off"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

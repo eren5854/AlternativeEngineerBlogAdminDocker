@@ -1,0 +1,11 @@
+services:
+
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: alternative-engineer-blog-admin
+    container_name: AlternativeEngineerBlogAdmin
+    ports:
+      - 32625:80
