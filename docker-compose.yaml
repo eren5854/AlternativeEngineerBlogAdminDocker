@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: alternative-engineer-blog-admin
+    image: alternative-engineer-blog-admin-client
     container_name: AlternativeEngineerBlogAdmin
     ports:
       - 32625:80
