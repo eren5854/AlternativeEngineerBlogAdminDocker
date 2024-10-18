@@ -1,0 +1,32 @@
+<div style="display: flex;">
+    <h1>Yazarlar ve Kullanıcılar</h1>
+</div>
+
+<div class="insights" style="display: flex;">
+    <table class="table table-striped" style="margin-top: 70px;">
+        <thead>
+            <tr>
+                <th scope="col">Tarih</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Yorum</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(comment of comments; track comment){
+            <tr>
+                <td>{{comment.createdDate | date: "dd/MM/yyyy - HH:mm"}}</td>
+                <td>{{comment.commentUser.userName}}</td>
+                <td>{{comment.commentUser.role.name}}</td>
+                <td style="max-width: 300px;">{{comment.content}}</td>
+                <td>
+                    <a routerLink="/blog-detail/{{comment.blogId}}"><button class="btn btn-success mr-2"><i
+                                class="fa-solid fa-eye"></i></button></a>
+                    <button class="btn btn-danger" (click)="deleteCommentById(comment.id, comment.appUserId, comment.blogId)"><i class="fa-solid fa-trash"></i></button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

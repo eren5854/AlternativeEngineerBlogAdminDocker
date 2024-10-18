@@ -13,6 +13,7 @@ import { MessageComponent } from './components/message/message.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { BlogDetailComponent } from './components/blog-detail/blog-detail.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 export const routes: Routes = [
     {
@@ -63,6 +64,10 @@ export const routes: Routes = [
             {
                 path: "newsletter",
                 component: NewsletterComponent
+            },
+            {
+                path: "comment",
+                component: CommentComponent
             }
         ]
     }

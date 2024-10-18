@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MessageModel } from '../../models/message.model';
 import { DatabaseInfoModel } from '../../models/database-info.model';
+import { CommentComponent } from '../comment/comment.component';
 
 @Component({
   selector: 'app-layout',
@@ -23,12 +24,15 @@ export class LayoutComponent {
   messages: MessageModel[] = [];
 
   messageCount: number = 0;
+  visitorCount: number = 0;
 
   userId: string = "";
   isDarkTheme = false;
   isSideBarOpen = false;
   fileSize = 0;
   fileSizeInMB: any;
+
+  commentCount = 0;
 
   constructor(
     private renderer: Renderer2,
@@ -38,6 +42,8 @@ export class LayoutComponent {
     this.getAllMessage();
     this.getDatabaseSize();
     this.getFileSize();
+    this.getVisitorCount();
+    this.getAllComment();
   }
 
   toggleTheme(): void {
@@ -85,7 +91,19 @@ export class LayoutComponent {
     });
   }
 
+  getVisitorCount(){
+    this.http.get("Informations/GetVisitorCount", (res) => {
+      this.visitorCount = res.data[0].visitorCount;
+    });
+  }
+
+  getAllComment() {
+    this.http.get("Comments/GetAllComment", (res) => {
+      this.commentCount= res.data.length;
+    });
+  }
+
   logout() {
-    localStorage.clear();
+    localStorage.setItem("token", "");
   }
 }
